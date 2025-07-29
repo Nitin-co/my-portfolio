@@ -2,109 +2,37 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Digital Library System</title>
-  <link rel="stylesheet" href="digital-library.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Grocery List App</title>
+  <link rel="stylesheet" href="gl.css">
+ 
 </head>
+
 <body>
-  <div>
-    <header>
-      <h1>Digital Library</h1>
-      <div id="authStatus">
-        <span id="currentUser"></span>
-        <button id="logoutBtn" class="btn-secondary hidden">Logout</button>
-      </div>
-    </header>
+  <header><h1>Grocery List App</h1></header>
 
-    <button id="toggleTheme" class="btn">
-      <span id="themeIcon" class="icon"></span>
-    </button>
-  </div>
-  
-  <div class="container">
-    <section id="authForms" class="card">
-      <h2>Login or Register</h2>
-      <form id="loginForm">
-        <h3>Login</h3>
-        <input type="text" id="loginUsername" placeholder="Username" required>
-        <input type="password" id="loginPassword" placeholder="Password" required>
-        <button type="submit" class="btn-primary">Login</button>
-        <p class="error" id="loginError"></p>
-      </form>
+  <section class="card">
+    <input id="GroceryName" type="text" placeholder="Grocery Name" />
+    <input id="PlaceBought" type="text" placeholder="Place Bought" />
+    <button id="addBtn">Add</button>
+  </section>
 
-      <form id="registerForm">
-        <h3>Register</h3>
-        <input type="text" id="registerUsername" placeholder="Username" required>
-        <input type="password" id="registerPassword" placeholder="Password" required>
-        <button type="submit" class="btn-secondary">Register</button>
-        <p class="error" id="registerError"></p>
-      </form>
-    </section>
+  <section>
+    <h2>My Grocery List (<span id="count">0</span> items)</h2>
+    <button id="clearAllBtn">Clear All</button>
+    <table>
+      <thead>
+        <tr>
+          <th>Grocery Name</th>
+          <th>Place Bought</th>
+          <th>Date</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="groceryBody"></tbody>
+    </table>
+  </section>
 
-    <section id="libraryApp" class="hidden">
-      <section class="card">
-        <h2>Add or Edit a Book</h2>
-        <form id="bookForm">
-          <label for="title">Title</label>
-          <input type="text" id="title" required>
-
-          <label for="author">Author</label>
-          <input type="text" id="author" required>
-
-          <label for="genre">Genre</label>
-          <select id="genre" required>
-            <option value="">--Choose Genre--</option>
-            <option value="Classics">Classics</option>
-            <option value="Fantasy">Fantasy</option>
-            <option value="Horror">Horror</option>
-            <option value="Comedy">Comedy</option>
-            <option value="Sci-fi">Sci-fi</option>
-          </select>
-
-          <label for="description">Description</label>
-          <textarea id="description" rows="4" required></textarea>
-
-          <button type="submit" class="btn-primary">Save Book</button>
-        </form>
-      </section>
-
-      <section class="card">
-        <input type="text" id="searchInput" placeholder="🔍 Search by title or author...">
-        <select id="sortSelect">
-          <option value="title">Sort by Title</option>
-          <option value="author">Sort by Author</option>
-        </select>
-      </section>
-
-      <section>
-        <p>Here's the list of Genres to choose from:</p>
-        <button id="genreBtn" class="button">Genres</button>
-      </section>
-
-      <section id="Genres" class="hidden">
-        <div class="grid" style="margin-top: 1rem;">
-          <a href="#Classics">Classics</a>
-          <a href="#Fantasy">Fantasy</a>
-          <a href="#Horror">Horror</a>
-          <a href="#Comedy">Comedy</a>
-          <a href="#Sci-fi">Sci-fi</a>
-        </div>
-      </section>
-
-      <section class="card">
-        <button id="clearAllBtn" class="btn-danger">Clear All Books</button>
-        <button id="downloadBtn" class="btn-secondary">Download Book List</button>
-      </section>
-
-      <section id="bookList">
-        <div id="Classics" class="card"><h3>Classics</h3></div>
-        <div id="Fantasy" class="card"><h3>Fantasy</h3></div>
-        <div id="Horror" class="card"><h3>Horror</h3></div>
-        <div id="Comedy" class="card"><h3>Comedy</h3></div>
-        <div id="Sci-fi" class="card"><h3>Sci-fi</h3></div>
-      </section>
-    </section>
-  </div>
-  <script src="dlsscript.js"></script>
+  <script src="glscript.js"></script>
 </body>
 </html>

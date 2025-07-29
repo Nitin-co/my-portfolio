@@ -1,0 +1,72 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 20px;
+}
+
+header {
+    color: rgb(127, 10, 21);
+    font-size: 24px;
+    font-weight: 600;
+}
+
+input {
+    margin: 4px 2px;
+}
+
+.card {
+    background-color: rgb(231, 177, 217);
+    padding: 10px;
+    border-radius: 6px;
+    width: 320px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+}
+
+.done td {
+    text-decoration: line-through;
+    color: grey;
+}
+
+button {
+    border-radius: 4px;
+    color: rgb(49, 43, 34);
+    background: bisque;
+    cursor: pointer;
+    margin: 2px;
+}
+
+button:hover {
+    color: deeppink;
+    text-decoration: underline;
+}
+
+#clearAllBtn {
+    background-color: rgb(255, 143, 143);
+    margin: 10px 0;
+}
+
+@media screen and (max-width: 480px) {
+    .card {
+        width: 100%;
+    }
+
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+
+    td {
+        margin-bottom: 10px;
+    }
+}

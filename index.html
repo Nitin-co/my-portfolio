@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nitin's Website</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="Website.css" rel="stylesheet" />
+  <style>
+    nav a.active {
+      color: deeppink;
+      border-bottom: 2px solid deeppink;
+    }
+    #scrollTopBtn {
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      padding: 10px 14px;
+      border: none;
+      background: #222;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+      z-index: 999;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Nitin Shukla</h1>
+    <nav aria-label="Main Navigation">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <h2>Software Developer</h2>
+      <p>I build clean, user-centric, and responsive digital solutions with modern technologies.</p>
+      <img src="https://www.elaborata.com.br/img/treinamentos/original/163-desenvolvimento-front-end-com-html-css-javascript-e-bootstrap-capa.jpg" alt="programming languages" />
+      <br /><br />
+      <a href="#projects" class="btn">View Projects</a>
+    </div>
+  </section>
+
+  <section id="about" class="container">
+    <h2>About</h2>
+    <p>I’m a software developer with a passion for building clean, efficient, and user-centric digital solutions. Proficient in front-end and back-end technologies including HTML, CSS, JavaScript, and Python, I enjoy solving complex problems through code and collaborating with teams to bring impactful projects to life. Whether it's developing responsive websites or full-stack web applications, I’m driven by continuous learning and delivering high-quality results.</p>
+  </section>
+
+  <section id="skills" class="container">
+    <h2>Skills</h2>
+    <ul>
+      <li>HTML, CSS, JavaScript</li>
+      <li>React, Node.js</li>
+      <li>Python, Flask</li>
+      <li>Git & GitHub</li>
+    </ul>
+  </section>
+
+  <section id="projects" class="container">
+    <h2>Projects</h2>
+    <div class="project-grid">
+      <div class="project-card">
+        <h3>Responsive Portfolio Website</h3>
+        <p>Built using HTML and CSS to showcase a clean, modern personal website.</p>
+        <a href="index.html" class="btn" target="_blank">Live Demo</a>
+        <a href="#" class="btn" target="_blank">Source Code</a>
+      </div>
+
+      <div class="project-card">
+        <h3>Digital Library System</h3>
+        <p>A full-featured library web app with login, theme toggle, and genre-based book organization.</p>
+        <a href="digital-library/index.html" class="btn" target="_blank">Live Demo</a>
+        <a href="#" class="btn" target="_blank">Source Code</a>
+      </div>
+
+      <div class="project-card">
+        <h3>Grocery List App</h3>
+        <p>Add, edit, and organize grocery items with persistent local storage.</p>
+        <a href="grocery-list/index.html" class="btn" target="_blank">Live Demo</a>
+        <a href="#" class="btn" target="_blank">Source Code</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="container">
+    <h4>Contact</h4>
+    <form name="contact" method="POST" data-netlify="true">
+      <input type="hidden" name="form-name" value="contact" />
+      
+      <label for="Email">Email</label>
+      <input type="text" id="Email" name="Email" required /><br />
+      
+      <label for="Github">GitHub</label>
+      <input type="text" id="Github" name="Github" /><br /><br />
+      
+      <label for="message">Message</label>
+      <textarea name="message" rows="4" cols="40" required></textarea>
+      <br />
+      <button type="submit">Submit</button>
+    </form>
+  </section>
+
+
+  <footer>
+    © 2025 Nitin Shukla. All rights reserved.
+  </footer>
+
+  <button id="scrollTopBtn">↑ Top</button>
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener("click", function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute("href"));
+        if (target) {
+          target.scrollIntoView({ behavior: "smooth" });
+        }
+      });
+    });
+    const scrollBtn = document.getElementById("scrollTopBtn");
+    window.onscroll = () => {
+      scrollBtn.style.display = window.scrollY > 300 ? "block" : "none";
+    };
+    scrollBtn.onclick = () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    };
+    const sections = document.querySelectorAll("section[id]");
+    const navLinks = document.querySelectorAll("nav a");
+
+    window.addEventListener("scroll", () => {
+      let current = "";
+      sections.forEach((section) => {
+        const sectionTop = section.offsetTop;
+        if (scrollY >= sectionTop - 200) {
+          current = section.getAttribute("id");
+        }
+      });
+
+      navLinks.forEach((link) => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === `#${current}`) {
+          link.classList.add("active");
+        }
+      });
+    });
+  </script>
+</body>
+</html>

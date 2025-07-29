@@ -1,155 +1,110 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nitin's Website</title>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
-  <link href="Website.css" rel="stylesheet" />
-  <style>
-    nav a.active {
-      color: deeppink;
-      border-bottom: 2px solid deeppink;
-    }
-    #scrollTopBtn {
-      display: none;
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      padding: 10px 14px;
-      border: none;
-      background: #222;
-      color: white;
-      border-radius: 6px;
-      cursor: pointer;
-      z-index: 999;
-      font-weight: bold;
-    }
-  </style>
+  <title>Digital Library System</title>
+  <link rel="stylesheet" href="digital-library.css">
 </head>
-
 <body>
-  <header>
-    <h1>Nitin Shukla</h1>
-    <nav aria-label="Main Navigation">
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
-
-  <section class="hero">
-    <div class="container">
-      <h2>Software Developer</h2>
-      <p>I build clean, user-centric, and responsive digital solutions with modern technologies.</p>
-      <img src="https://www.elaborata.com.br/img/treinamentos/original/163-desenvolvimento-front-end-com-html-css-javascript-e-bootstrap-capa.jpg" alt="programming languages" />
-      <br /><br />
-      <a href="#projects" class="btn">View Projects</a>
-    </div>
-  </section>
-
-  <section id="about" class="container">
-    <h2>About</h2>
-    <p>I’m a software developer with a passion for building clean, efficient, and user-centric digital solutions. Proficient in front-end and back-end technologies including HTML, CSS, JavaScript, and Python, I enjoy solving complex problems through code and collaborating with teams to bring impactful projects to life. Whether it's developing responsive websites or full-stack web applications, I’m driven by continuous learning and delivering high-quality results.</p>
-  </section>
-
-  <section id="skills" class="container">
-    <h2>Skills</h2>
-    <ul>
-      <li>HTML, CSS, JavaScript</li>
-      <li>React, Node.js</li>
-      <li>Python, Flask</li>
-      <li>Git & GitHub</li>
-    </ul>
-  </section>
-
-  <section id="projects" class="container">
-    <h2>Projects</h2>
-    <div class="project-grid">
-      <div class="project-card">
-        <h3>Responsive Portfolio Website</h3>
-        <p>Built using HTML and CSS to showcase a clean, modern personal website.</p>
-        <a href="index.html" class="btn" target="_blank">Live Demo</a>
-        <a href="#" class="btn" target="_blank">Source Code</a>
+  <div>
+    <header>
+      <h1>Digital Library</h1>
+      <div id="authStatus">
+        <span id="currentUser"></span>
+        <button id="logoutBtn" class="btn-secondary hidden">Logout</button>
       </div>
+    </header>
 
-      <div class="project-card">
-        <h3>Digital Library System</h3>
-        <p>A full-featured library web app with login, theme toggle, and genre-based book organization.</p>
-        <a href="digital-library/index.html" class="btn" target="_blank">Live Demo</a>
-        <a href="#" class="btn" target="_blank">Source Code</a>
-      </div>
+    <button id="toggleTheme" class="btn">
+      <span id="themeIcon" class="icon"></span>
+    </button>
+  </div>
+  
+  <div class="container">
+    <section id="authForms" class="card">
+      <h2>Login or Register</h2>
+      <form id="loginForm">
+        <h3>Login</h3>
+        <input type="text" id="loginUsername" placeholder="Username" required>
+        <input type="password" id="loginPassword" placeholder="Password" required>
+        <button type="submit" class="btn-primary">Login</button>
+        <p class="error" id="loginError"></p>
+      </form>
 
-      <div class="project-card">
-        <h3>Grocery List App</h3>
-        <p>Add, edit, and organize grocery items with persistent local storage.</p>
-        <a href="grocery-list/index.html" class="btn" target="_blank">Live Demo</a>
-        <a href="#" class="btn" target="_blank">Source Code</a>
-      </div>
-    </div>
-  </section>
+      <form id="registerForm">
+        <h3>Register</h3>
+        <input type="text" id="registerUsername" placeholder="Username" required>
+        <input type="password" id="registerPassword" placeholder="Password" required>
+        <button type="submit" class="btn-secondary">Register</button>
+        <p class="error" id="registerError"></p>
+      </form>
+    </section>
 
-  <section id="contact" class="container">
-    <h4>Contact</h4>
-    <form name="contact" method="POST" data-netlify="true">
-      <input type="hidden" name="form-name" value="contact" />
-      
-      <label for="Email">Email</label>
-      <input type="text" id="Email" name="Email" required /><br />
-      
-      <label for="Github">GitHub</label>
-      <input type="text" id="Github" name="Github" /><br /><br />
-      
-      <label for="message">Message</label>
-      <textarea name="message" rows="4" cols="40" required></textarea>
-      <br />
-      <button type="submit">Submit</button>
-    </form>
-  </section>
+    <section id="libraryApp" class="hidden">
+      <section class="card">
+        <h2>Add or Edit a Book</h2>
+        <form id="bookForm">
+          <label for="title">Title</label>
+          <input type="text" id="title" required>
 
+          <label for="author">Author</label>
+          <input type="text" id="author" required>
 
-  <footer>
-    © 2025 Nitin Shukla. All rights reserved.
-  </footer>
+          <label for="genre">Genre</label>
+          <select id="genre" required>
+            <option value="">--Choose Genre--</option>
+            <option value="Classics">Classics</option>
+            <option value="Fantasy">Fantasy</option>
+            <option value="Horror">Horror</option>
+            <option value="Comedy">Comedy</option>
+            <option value="Sci-fi">Sci-fi</option>
+          </select>
 
-  <button id="scrollTopBtn">↑ Top</button>
-  <script>
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener("click", function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute("href"));
-        if (target) {
-          target.scrollIntoView({ behavior: "smooth" });
-        }
-      });
-    });
-    const scrollBtn = document.getElementById("scrollTopBtn");
-    window.onscroll = () => {
-      scrollBtn.style.display = window.scrollY > 300 ? "block" : "none";
-    };
-    scrollBtn.onclick = () => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    };
-    const sections = document.querySelectorAll("section[id]");
-    const navLinks = document.querySelectorAll("nav a");
+          <label for="description">Description</label>
+          <textarea id="description" rows="4" required></textarea>
 
-    window.addEventListener("scroll", () => {
-      let current = "";
-      sections.forEach((section) => {
-        const sectionTop = section.offsetTop;
-        if (scrollY >= sectionTop - 200) {
-          current = section.getAttribute("id");
-        }
-      });
+          <button type="submit" class="btn-primary">Save Book</button>
+        </form>
+      </section>
 
-      navLinks.forEach((link) => {
-        link.classList.remove("active");
-        if (link.getAttribute("href") === `#${current}`) {
-          link.classList.add("active");
-        }
-      });
-    });
-  </script>
+      <section class="card">
+        <input type="text" id="searchInput" placeholder="🔍 Search by title or author...">
+        <select id="sortSelect">
+          <option value="title">Sort by Title</option>
+          <option value="author">Sort by Author</option>
+        </select>
+      </section>
+
+      <section>
+        <p>Here's the list of Genres to choose from:</p>
+        <button id="genreBtn" class="button">Genres</button>
+      </section>
+
+      <section id="Genres" class="hidden">
+        <div class="grid" style="margin-top: 1rem;">
+          <a href="#Classics">Classics</a>
+          <a href="#Fantasy">Fantasy</a>
+          <a href="#Horror">Horror</a>
+          <a href="#Comedy">Comedy</a>
+          <a href="#Sci-fi">Sci-fi</a>
+        </div>
+      </section>
+
+      <section class="card">
+        <button id="clearAllBtn" class="btn-danger">Clear All Books</button>
+        <button id="downloadBtn" class="btn-secondary">Download Book List</button>
+      </section>
+
+      <section id="bookList">
+        <div id="Classics" class="card"><h3>Classics</h3></div>
+        <div id="Fantasy" class="card"><h3>Fantasy</h3></div>
+        <div id="Horror" class="card"><h3>Horror</h3></div>
+        <div id="Comedy" class="card"><h3>Comedy</h3></div>
+        <div id="Sci-fi" class="card"><h3>Sci-fi</h3></div>
+      </section>
+    </section>
+  </div>
+  <script src="dlsscript.js"></script>
 </body>
 </html>
